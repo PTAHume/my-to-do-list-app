@@ -1,0 +1,13 @@
+<h1 class="app-title">Welcome to {{ title }}!</h1>
+<div class="todo-app">
+  <app-todo-item-input (newToDoItem)="addTodo($event)"></app-todo-item-input>
+  <ul>
+    <li *ngFor="let todoItem of todoList">
+      <app-todo-item
+        [todo]="todoItem"
+        (deleteTodo)="deleteTodo($event)"
+        (updateTodo)="updateTodo($event.item, $event.changes)">
+      </app-todo-item>
+    </li>
+  </ul>
+</div>

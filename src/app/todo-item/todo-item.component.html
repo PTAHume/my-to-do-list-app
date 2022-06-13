@@ -1,0 +1,31 @@
+
+<form class="form-inline" [formGroup]="todoForm">
+<div class="todo-item">
+  <div>
+    <input type="checkbox" class="todo-checkbox" 
+          (click)="completeItem()" [checked]="todo.completed" />
+    <span class="todo-title">
+      <label [ngClass]="{ 'todo-complete': todo.completed }"
+             *ngIf="!isEditMode">{{ todo.itemValue }}</label>
+             <button (click)="editTodo()" title="Click to edit" style="border: 0; background: transparent" [hidden]="isEditMode">
+             <img src="https://pic.onlinewebfonts.com/svg/img_386644.png" width="10" height="10" alt="submit" />
+            </button>
+      <input [hidden]="!isEditMode" #todoEdit id="todoEdit" name="todoEdit" 
+              formControlName="todoEdit" [(ngModel)]="originalValue" />
+      <button [hidden]="!isEditMode" class="btn" 
+              [disabled]="todoForm.invalid" (click)="saveEdit()"> Save </button>
+      <button [hidden]="!isEditMode" class="btn btn-red" (click)="cancelEdit()"> Cancel </button>
+      <div *ngIf="
+          todoControls['todoEdit'].touched && todoControls['todoEdit'].invalid" class="alert alert-danger">
+        <div *ngIf="
+            todoControls['todoEdit'].errors &&
+            todoControls['todoEdit'].errors['required']"> Name is required. </div>
+        <div *ngIf="
+            todoControls['todoEdit'].errors &&
+            todoControls['todoEdit'].errors['minlength']"> Name should be 3 character. </div>
+      </div>
+    </span>
+  </div>
+  <button class="btn btn-red" (click)="removeItem()">remove</button>
+</div>
+</form>

@@ -1,0 +1,27 @@
+.todo-item {
+  padding: 10px 0;
+  border-top: solid 1px #ddd;
+  min-height: 30px;
+  line-height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-checkbox {
+  flex-shrink: 0;
+  margin: auto 1ex auto 0;
+}
+
+.todo-title {
+  flex-grow: 1;
+  padding-left: 11px;
+}
+.todo-complete {
+  text-decoration: line-through;
+}
+
+.moo{
+  background: url("https://cdn-icons.flaticon.com/png/128/2951/premium/2951136.png?token=exp=1654872367~hmac=8e39370f8d8b175496cd2be4808e9343") no-repeat;
+  cursor:pointer;
+  border: none;
+}
