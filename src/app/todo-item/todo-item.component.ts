@@ -7,10 +7,9 @@ import { TodoItem } from '../interface/todo-item-interface';
   styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent implements OnInit {
-  constructor() {}
-  isEditMode: boolean;
-  originalValue: string;
-  @Input() todo: TodoItem;
+  isEditMode: boolean = false;
+  originalValue: string = '';
+  @Input() todo: TodoItem | any;
   @Output() deleteTodo: EventEmitter<TodoItem> = new EventEmitter();
   @Output() updateTodo: EventEmitter<any> = new EventEmitter();
 
@@ -30,14 +29,14 @@ export class TodoItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.originalValue = this.todo.itemValue;
+    this.originalValue = this.todo?.itemValue || '';
   }
 
   completeItem(): void {
-    this.todo.completed = !this.todo.completed;
+    if (this.todo) this.todo.completed = !this.todo?.completed || false;
     this.updateTodo.emit({
       itemValue: this.todo,
-      changes: { completed: !this.todo.completed },
+      changes: { completed: !this.todo?.completed || false },
     });
   }
 
@@ -46,15 +45,15 @@ export class TodoItemComponent implements OnInit {
   }
 
   cancelEdit(): void {
-    this.originalValue = this.todo.itemValue;
+    this.originalValue = this.todo?.itemValue || '';
     this.isEditMode = false;
   }
 
   saveEdit(): void {
-    this.todo.itemValue = this.originalValue;
+    if (this.todo) this.todo.itemValue = this.originalValue;
     this.updateTodo.emit({
       itemValue: this.todo,
-      changes: { completed: !this.todo.completed },
+      changes: { completed: !this.todo?.completed || false },
     });
     this.isEditMode = false;
   }

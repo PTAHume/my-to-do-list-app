@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TodoItem } from '../interface/todo-item-interface';
 import { TodoListStorageService } from './todo-list-storage.service';
 
-const todoListStorageKey = 'Todo_List_4';
+const todoListStorageKey = 'Todo_List';
 
 @Injectable({
   providedIn: 'root',

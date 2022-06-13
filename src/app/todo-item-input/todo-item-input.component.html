@@ -1,19 +1,16 @@
 <form class="form-inline" [formGroup]="todoForm">
-  <input type="newTodo"  placeholder="Enter a new item here" formControlName="newTodo" #newTodo id="newTodo" name="newTodo" class="todo-input" required />
-  <button class="btn" (click)="addNewTodoItem(newTodo.value)" [disabled]="todoForm.invalid">Click me</button>
-  <div
-    *ngIf="todoControls['newTodo'].touched && todoControls['newTodo'].invalid"
-    class="alert alert-danger">
-    <div
-      *ngIf="
+    <input type="newTodo" placeholder="Enter a new item here" formControlName="newTodo" #newTodo id="newTodo" name="newTodo" class="todo-input" required />
+    <button class="btn" (click)="addNewTodoItem(newTodo.value)" [disabled]="todoForm.invalid">Click me</button>
+    <div *ngIf="todoControls['newTodo'].touched && todoControls['newTodo'].invalid" class="alert alert-danger">
+        <div *ngIf="
             todoControls['newTodo'].errors &&
             todoControls['newTodo'].errors['required']">
-      Name is required.
-    </div>
-    <div *ngIf="
+            Name is required.
+        </div>
+        <div *ngIf="
               todoControls['newTodo'].errors &&
               todoControls['newTodo'].errors['minlength']">
-      Name should be 3 character.
+            Name should be 3 character.
+        </div>
     </div>
-  </div>
 </form>

@@ -8,7 +8,7 @@ import { TodoListService } from './services/todo-list.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  todoList: TodoItem[];
+  todoList: TodoItem[] = [];
   title = 'My To Do List APP';
 
   constructor(private todoListService: TodoListService) {}
