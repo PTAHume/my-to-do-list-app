@@ -8,7 +8,7 @@ const todoListStorageKey = 'Todo_List';
   providedIn: 'root',
 })
 export class TodoListService {
-  todoList: TodoItem[];
+  todoList: TodoItem[] = [];
 
   constructor(private todoListStorage: TodoListStorageService) {
     this.todoList = todoListStorage.getTodoList(todoListStorageKey) || [];
